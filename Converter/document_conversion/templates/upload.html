@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>PDF to DOC Converter</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #f2f2f2;
+    }
+
+    h1 {
+      color: #333;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 400px;
+      margin: 0 auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    input[type="file"] {
+      display: block;
+      margin-bottom: 15px;
+    }
+
+    input[type="submit"] {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    #conversionSuccess {
+      display: none;
+      background-color: #4CAF50;
+      color: white;
+      padding: 20px;
+      margin-top: 20px;
+      border-radius: 5px;
+    }
+
+    #conversionSuccess h2 {
+      margin-top: 0;
+      font-size: 20px;
+    }
+
+    #conversionSuccess p {
+      margin-bottom: 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>DOC to PDF Converter</h1>
+
+    <form
+      method="POST"
+      action="{% url 'upload' %}"
+      enctype="multipart/form-data"
+    >
+        {% csrf_token %}
+      <label for="pdfFile">Select PDF File (2 pages maximum):</label>
+      <input type="file" id="pdfFile" name="document" required><br><br>
+      <input type="submit" value="Convert to PDF">
+    </form>
+
+    <div id="conversionSuccess">
+      <h2>Conversion Successful!</h2>
+      <p>Your PDF file has been converted to DOC format.</p>
+    </div>
+  </div>
+
+ 
+</body>
+</html>
